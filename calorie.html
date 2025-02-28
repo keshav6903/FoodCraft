@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie-Based Recipe Suggestion - Food Crafts</title>
+    <link rel="stylesheet" href="calorie-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+   
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Food Crafts</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <section id="calorie-input">
+        <div class="container">
+            <h2>Find Recipes Based on Your Calorie Needs</h2>
+            <p>Enter your daily calorie requirements, and we'll suggest delicious recipes close to your calorie target!</p>
+            <form id="calorieForm">
+                <label for="calories">Enter Calories:</label>
+                <input type="number" id="calories" name="calories" placeholder="Enter calories" required>
+                <button type="submit" class="btn">Find Recipes</button>
+            </form>
+        </div>
+    </section>
+
+    
+    <section id="recipe-suggestions">
+        <div class="container">
+            <h2>Your Suggested Recipes</h2>
+            <div id="recipeList">
+              
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Food Crafts. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.getElementById('calorieForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const calories = parseInt(document.getElementById('calories').value);
+            const recipeList = document.getElementById('recipeList');
+            
+            const dishes = [
+          
+                { name: 'Vegetable Soup', calories: 100, recipe: '1. Simmer chopped vegetables in vegetable broth. 2. Season with herbs and spices.' },
+                { name: 'Fruit Salad', calories: 120, recipe: '1. Mix a variety of fresh fruits. 2. Optionally add a squeeze of lemon juice.' },
+                { name: 'Chia Pudding', calories: 150, recipe: '1. Mix chia seeds with almond milk and sweetener. 2. Let it sit overnight and top with fruit.' },
+                { name: 'Greek Yogurt with Honey', calories: 180, recipe: '1. Serve Greek yogurt topped with a drizzle of honey and a sprinkle of nuts or fruit.' },
+                { name: 'Steamed Broccoli', calories: 100, recipe: '1. Steam broccoli florets until tender. 2. Season with salt and pepper.' },
+
+               
+                { name: 'Chicken Salad', calories: 300, recipe: '1. Toss shredded chicken with mixed greens, vegetables, and a light dressing.' },
+                { name: 'Quinoa Bowl', calories: 350, recipe: '1. Cook quinoa and top with vegetables, beans, and a protein source like chicken or tofu.' },
+                { name: 'Paneer Tikka', calories: 400, recipe: '1. Marinate paneer cubes in yogurt and spices. 2. Grill or bake until cooked.' },
+                { name: 'Stuffed Bell Peppers', calories: 350, recipe: '1. Stuff bell peppers with a mixture of rice, ground meat, and spices. 2. Bake until tender.' },
+                { name: 'Turkey Sandwich', calories: 400, recipe: '1. Layer sliced turkey, cheese, lettuce, and tomato between whole-grain bread.' },
+
+                { name: 'Chicken Biryani', calories: 800, recipe: '1. Marinate chicken with spices. 2. Cook rice partially. 3. Layer rice and chicken with fried onions and cook.' },
+                { name: 'Butter Chicken', calories: 1200, recipe: '1. Marinate chicken in yogurt and spices. 2. Cook with a creamy tomato-based sauce and butter. Serve with naan or rice.' },
+                { name: 'Shahi Paneer', calories: 900, recipe: '1. Cook paneer cubes in a rich, creamy gravy made with nuts and spices. Serve with naan or rice.' },
+                { name: 'Chole Bhature', calories: 700, recipe: '1. Prepare chole (chickpea curry) with spices. 2. Make bhature (deep-fried bread) and serve with chole.' },
+                { name: 'Lamb Rogan Josh', calories: 900, recipe: '1. Marinate and cook lamb in a rich, spiced gravy. Serve with rice or naan.' },
+
+                { name: 'Pav Bhaji', calories: 600, recipe: '1. Make bhaji (vegetable mash) with spices. 2. Toast pav (bread rolls) and serve with bhaji.' },
+                { name: 'Vegetable Pulao', calories: 250, recipe: '1. Cook rice with mixed vegetables and spices. Serve with raita or curry.' },
+                { name: 'Gulab Jamun', calories: 300, recipe: '1. Prepare dough with milk powder. 2. Shape into balls, deep fry, and soak in sugar syrup.' },
+                { name: 'Butter Chicken with Naan', calories: 1400, recipe: '1. Cook Butter Chicken as described. 2. Serve with freshly baked naan bread.' },
+                { name: 'Chicken Korma', calories: 1300, recipe: '1. Cook chicken in a creamy, spiced sauce made with yogurt, cream, and spices.' },
+
+                // 
+                { name: 'Lamb Shank with Mashed Potatoes', calories: 2200, recipe: '1. Slow-cook lamb shank with spices. 2. Serve with creamy mashed potatoes.' },
+                { name: 'Beef Stroganoff', calories: 2000, recipe: '1. Cook beef strips in a rich, creamy sauce with mushrooms. Serve over egg noodles.' },
+                { name: 'Stuffed Lasagna', calories: 2500, recipe: '1. Layer pasta, meat sauce, cheese, and vegetables. Bake until bubbly.' },
+                { name: 'Seafood Paella', calories: 2500, recipe: '1. Cook rice with seafood, saffron, and vegetables in a large pan.' },
+                { name: 'Indian Feast', calories: 3000, recipe: '1. A lavish spread of various Indian dishes including curries, rice, bread, and desserts.' }
+            ];
+            
+      
+            const sortedDishes = dishes.map(dish => ({
+                ...dish,
+                diff: Math.abs(dish.calories - calories)
+            })).sort((a, b) => a.diff - b.diff);
+            
+           
+            const suggestions = sortedDishes.slice(0, 5);
+            if (suggestions.length > 0) {
+                recipeList.innerHTML = suggestions.map(dish => `
+                    <div class="recipe-card">
+                        <h3>${dish.name}</h3>
+                        <p><strong>Calories:</strong> ${dish.calories}</p>
+                        <p><strong>Recipe:</strong> ${dish.recipe}</p>
+                    </div>
+                `).join('');
+            } else {
+                recipeList.innerHTML = '<p>No recipes found for the specified calorie range.</p>';
+            }
+        });
+    </script>
+
+</body>
+</html>

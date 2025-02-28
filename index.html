@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodCraft - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="logo.png" alt="FoodCraft Logo" class="logo">
+                <h1>FoodCraft</h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="calorie.html">Find Recipes</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">About Us</a>
+                        <div class="dropdown-content">
+                            <a href="#goals">Our Goals</a>
+                            <a href="#founders">Founders</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h2>Welcome to FoodCraft</h2>
+            <p>Your go-to destination for calorie-based meal planning and recipe suggestions. Discover delicious recipes tailored to your calorie needs!</p>
+            <a href="calorie.html" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <section id="goals">
+        <div class="container">
+            <h2>Our Goals</h2>
+            <p>At FoodCraft, our mission is to provide personalized meal suggestions that cater to your calorie requirements while promoting healthy and enjoyable eating habits. We aim to simplify meal planning by offering recipes that fit your nutritional needs and preferences.</p>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <div class="container">
+            <h2>What Our Users Say</h2>
+            <div class="review">
+                <p>"FoodCraft has completely transformed the way I plan my meals. The calorie-based recommendations are spot on and have helped me stay on track with my fitness goals!"</p>
+                <p><strong>- Tanya Anand </strong></p>
+            </div>
+            <div class="review">
+                <p>"I love how easy it is to find recipes that fit my calorie requirements. The website is user-friendly and the recipes are delicious!"</p>
+                <p><strong>- Sunaina Kashyap </strong></p>
+            </div>
+            <div class="review">
+                <p>"FoodCraft offers a fantastic range of recipes. It's great to have options that are both healthy and tailored to my dietary needs."</p>
+                <p><strong>- Sneha Agarwal </strong></p>
+            </div>
+        </div>
+    </section>
+
+ 
+    <section id="founders">
+        <div class="container">
+            <h2>Meet the Founders</h2>
+            <p>FoodCraft is a project created by four dedicated BSc Computer Science students. We are passionate about technology and healthy eating, and this project is a testament to our commitment to combining the two. Learn more about us:</p>
+            <ul>
+                <li><strong>Aarya Jadhav</strong> - Aarya is focused on front-end development and user experience design.</li>
+                <li><strong>Keshav Sinha</strong> - Keshav specializes in multitasking and database management.</li>
+                <li><strong>Rohin Thakur</strong> - Rohin handles project management and system integration.</li>
+                <li><strong>Vineet Kadam</strong> - Vineet is responsible for UI/UX design and overall site aesthetics.</li>
+            </ul>
+            <p>We are in our 3rd year of BSc Computer Science and this project represents our efforts to apply our knowledge in a practical and impactful way.</p>
+        </div>
+    </section>
+
+   <!-- Your existing HTML code -->
+
+<!-- Feedback Section -->
+<section id="feedback-section">
+    <h2>We'd Love Your Feedback!</h2>
+    <form id="feedback-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+    <p id="feedback-response"></p>
+</section>
+
+<!-- Link to the JavaScript file -->
+<script src="feedback.js"></script>
+</body>
+</html>
+
+
+   
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 FoodCraft. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
